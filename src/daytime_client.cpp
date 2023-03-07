@@ -12,7 +12,7 @@
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
 
-using boost::asio::ip::tcp;
+using boost::asio::ip::tcp; // Using the tcp class and socket type.
 
 int main(int argc, char* argv[])
 {
@@ -38,19 +38,18 @@ int main(int argc, char* argv[])
       boost::array<char, 128> buf;
       boost::system::error_code error;
 
-      size_t len = socket.read_some(boost::asio::buffer(buf), error);
+      size_t len = socket.read_some(boost::asio::buffer(buf), error); // 
 
       if (error == boost::asio::error::eof)
         break; // Connection closed cleanly by peer.
       else if (error)
-        throw boost::system::system_error(error); // Some other error.
-
+        throw boost::system::system_error(error); // If some error accures, the we throw it on the stack for the catch method to collect.
       std::cout.write(buf.data(), len);
     }
   }
   catch (std::exception& e)
   {
-    std::cerr << e.what() << std::endl;
+    std::cerr << e.what() << std::endl; // Tells what the error e is.
   }
 
   return 0;
