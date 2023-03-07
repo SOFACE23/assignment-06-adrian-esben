@@ -36,14 +36,14 @@ int main(int argc, char* argv[])
     while(true)
     {
       boost::array<char, 128> buf;
-      boost::system::error_code error;
+      boost::system::error_code error; // Creating an error variable.
 
       size_t len = socket.read_some(boost::asio::buffer(buf), error); // Using the read method to read the buffed string from the daytime server.
 
       if (error == boost::asio::error::eof)
         break; // Connection closed cleanly by peer.
       else if (error)
-        throw boost::system::system_error(error); // If some error accures, the we throw it on the stack for the catch method to collect.
+        throw boost::system::system_error(error); // If some other error accures, the we throw it on the stack for the catch method to collect.
       std::cout.write(buf.data(), len);
     }
   }
