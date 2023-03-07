@@ -4,7 +4,10 @@
 #include <string>
 #include <boost/asio.hpp>
 
+#include <fstream>
+#include <vector>
+
 int main(int argc, char **argv)
 {
-    return 0;
+return 0;
 }
