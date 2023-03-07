@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
       boost::array<char, 128> buf;
       boost::system::error_code error;
 
-      size_t len = socket.read_some(boost::asio::buffer(buf), error); // 
+      size_t len = socket.read_some(boost::asio::buffer(buf), error); // Using the read method to read the buffed string from the daytime server.
 
       if (error == boost::asio::error::eof)
         break; // Connection closed cleanly by peer.
