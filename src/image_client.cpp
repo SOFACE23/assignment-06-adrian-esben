@@ -16,18 +16,19 @@
 
 using boost::asio::ip::tcp;
 
-constexpr size_t image_size = 17618; //We change the image_size to avoid 
+constexpr size_t image_size = 17618; // We change the image_size to avoid 
 
-void save_image(char* data, size_t len)
+void save_image(char* data, size_t len) //Implementation of Save_image method
 {
- std::ofstream filewrite;
- filewrite.open("copycat.jpg");
- for (int i = 0; i<len; i++)
+ std::ofstream filewrite;   // Firstly, we create an object "filewrite" to w
+                            // Which we use to write the data of the cat image to a new file called copycat
+ filewrite.open("copycat.jpg"); // We open the emtpy copy cat 
+ for (int i = 0; i<len; i++)    // Then we iterate through all the byte-data and write it all to new file using <<
  {
   filewrite << data[i];
  }
- filewrite.close();
-}
+ filewrite.close(); // Then, when we are done, we close the object we created and all the image data has been transfered.
+}                      // Important to close the object to ensure we have written everything into the new file and save it.
 
 int main(int argc, char* argv[])
 {
